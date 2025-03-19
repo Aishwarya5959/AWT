@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Document</title>
+</head>
+<body>
+    <h1>weather</h1>
+    <div>weather</div>
+    <script>
+        const apiKey = 'd4d54ca9df3073e166fae11dd37e44be';
+        const city = 'London';
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            const weatherDiv = document.getElementById('weather');
+            weatherDiv.innerHTML = `
+              <p>Temperature in ${city}: ${data.main.temp}°C</p>
+             
+            `;
+          })
+          .catch(error => {
+            console.error('Error fetching weather data:', error);
+          });
+      </script>
+</body>
+</html>
